@@ -44,7 +44,7 @@ namespace Paranoid
         {
             try
             {
-                Console.WriteLine("Введите дату начала задачи в формате 00.00.0000:");
+                Console.WriteLine("Введите дату начала задачи в формате dd.mm.yyyy:");
                 userInput = Console.ReadLine();
                
 
@@ -73,7 +73,7 @@ namespace Paranoid
         {
             try
             {
-                Console.WriteLine("Введите дату окончания задачи в формате 00.00.0000:");
+                Console.WriteLine("Введите дату окончания задачи в формате dd.mm.yyyy:");
                 userInput = Console.ReadLine();
                 
 
@@ -111,10 +111,15 @@ namespace Paranoid
                 }
 
                 int i;
+                
                
                 if (int.TryParse(userInput, out i) == false)
                 {
                     throw new Exception("Значение не соответствует числу");
+                }
+                if (Int16.Parse(userInput) < 0)
+                    {
+                    throw new Exception("Введено отрицательное число");
                 }
                 dateEstimate = Int16.Parse(userInput);
             }
@@ -135,8 +140,6 @@ namespace Paranoid
         {
             return dateEstimate;
         }
-
-       
 
         public void DescriptionTask()
         {
